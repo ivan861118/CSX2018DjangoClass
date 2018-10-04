@@ -5,9 +5,10 @@ from django.http import HttpResponse
 from django.contrib.auth.models import User
 
 
+
 def index(request):
-<<<<<<< HEAD
-	return render(request, 'guestbookver1.html')
-=======
-	return HttpResponse('Hello World,I am Ivan' )
->>>>>>> 48dee432b92e2e7e381d2a6c864dd8a7c54d2806
+	info_dict = {'Name':'Ivan Cheng','content':'第三週作業','msg':'哈囉'}
+	return render(request, 'index.html',{'info_dict': info_dict})
+
+	
+

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh">
+{% load  staticfiles %}
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Week2Example留言板</title>
+    <link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <h1>Hi~</h1>
+    <h2>第三週需要學的是....<br>
+        網路上有很多教學<br>
+        我要加油！<br>
+    </h2>
+    <div id="container">
+        <div id="content">
+
+            {% for key, value in info_dict.items  %}
+                <div class="msg">
+                    <span class="name">{{ key }}</span>
+                    {{ value }}
+                </div>
+            {% endfor %}
+            
+        </div>
+
+        <div id="send-box">
+            <form id="send-form">
+                <input type="text" name="name" id="name" placeholder="搜尋圖片"">
+                <input type="text" name="msg" id="msg" placeholder="圖片網址？">
+                <input type="submit" id="submit" value="送出">
+            </form>
+
+        </div>
+    </div>
+</body>
+
+</html>
+
