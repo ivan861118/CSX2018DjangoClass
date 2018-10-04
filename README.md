@@ -15,6 +15,7 @@
     iii. learn heroku and git  
     
     **Homework:**
+    Heroku command:  heroku login > git push heroku master
     
 
   
