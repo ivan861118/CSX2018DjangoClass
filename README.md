@@ -15,9 +15,18 @@
     iii. learn heroku and git  
     
     **Homework:**
+    Heroku command:  heroku login > git push heroku master
     
-    link: https://ivanhelloworldtest.herokuapp.com/
+
   
 ---
 ### Week2
+---
+### Week3
+    **Homework:**
+    Goal:use "for loop" in HTML
+    Sols:
+      views.py: store data & render(send data)
+      urls.py:routing 
+    link: https://ivanhelloworldtest.herokuapp.com/
     
