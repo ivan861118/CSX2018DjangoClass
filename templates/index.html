@@ -90,15 +90,24 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12 ">
+                          
 
+          
                             <div class="main_home text-center wow fadeInUp" data-wow-duration="700ms">
                                 <h1>Everything is designed. <br /> 
                                     Few things are designed well.</h1>
                                 <ul class="list-inline">
-                                    <li><a target="_blank" href="#">Welcome</a></li>
+                                    <!-- <li><a target="_blank" href="#">Welcome</a></li>
                                     <li><a target="_blank" href="#">design</a></li>
                                     <li><a target="_blank" href="#">develop</a></li>
-                                    <li><a target="_blank" href="#">support</a></li>
+                                    <li><a target="_blank" href="#">support</a></li> -->
+
+                                    {% if user.is_authenticated %}
+                                        <li>You're now logged in!!!</li>
+                                        <li><a href="{% url 'logout' %}">logout</a></li>
+                                    {% else %}
+                                        <li><a href="{% url 'login' %}">login</a></li>
+                                    {% endif %}
                                 </ul>
                             </div>
                             
