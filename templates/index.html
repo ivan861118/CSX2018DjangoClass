@@ -2,7 +2,7 @@
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang=""> <!--<![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="fr"> <!--<![endif]-->
 {% load  staticfiles %}
     <head>
         <meta charset="utf-8">
@@ -42,7 +42,10 @@
         <link rel="stylesheet" href="{% static 'css/responsive.css' %}" />
 
         <!--Theme Colors css-->
-        <!--<link rel="stylesheet" href="assets/css/white.css">-->                
+        <!--<link rel="stylesheet" href="assets/css/white.css">-->  
+        
+        
+        <script src="https://d3js.org/d3.v3.min.js"></script>
 
     </head>
 
@@ -188,6 +191,11 @@
                                     </div>
                                 </div>
 
+                                
+                                <div class="test">
+                                    <input type="file" id="fileinput" multiple ="multiple" accept="*" />
+                                </div>
+
 
 
                             </div><!-- End of main Portfolio area -->
@@ -286,6 +294,18 @@
         <!--End of Footer-->
 
 
+        <script>
+            // var dataPath = "../data/";
+            // var dataFile = "exp3,4.csv";
+            // var dataURL = dataPath + dataFile;
+
+            // d3.csv(dataURL,function(data) {
+            //     console.log(data);
+            // });
+        
+        </script>
+
+
 
 
         <script src="{% static '/js/vendor/jquery-1.11.2.min.js' %}"></script>
@@ -298,6 +318,7 @@
         <script src="{% static '/js/jquery.magnific-popup.js' %}"></script>
         <script src="{% static '/js/plugins.js' %}"></script>
         <script src="{% static 'js/main.js' %}"></script>
+        <script src="{% static 'js/user.js' %}"></script>
 
     </body>
 </html>
