@@ -124,18 +124,22 @@ jQuery(document).ready(function ($) {
      ---------------------------------------------*/
 
     $('.cd-menu-trigger').on('click', function (event) {
+        console.log('click!');
         event.preventDefault();
         $('.home-main-content').addClass('move-out');
         $('#main-nav').addClass('is-visible');
         $('.cd-shadow-layer').addClass('is-visible');
+      
     });
     //close menu
     $('.cd-close-menu').on('click', function (event) {
+        alert('hi');
         event.preventDefault();
         $('.home-main-content').removeClass('move-out');
         $('#main-nav').removeClass('is-visible');
         $('.cd-shadow-layer').removeClass('is-visible');
     });
+
 
     //clipped image - blur effect
     set_clip_property();

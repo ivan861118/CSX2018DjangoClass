@@ -251,53 +251,11 @@ Main components
     -moz-transition-duration: 0.3s;
     transition-duration: 0.3s;
 }
-#main-nav .cd-close-menu::before {
-    -webkit-transform: rotate(45deg);
-    -moz-transform: rotate(45deg);
-    -ms-transform: rotate(45deg);
-    -o-transform: rotate(45deg);
-    transform: rotate(45deg);
-}
-#main-nav .cd-close-menu::after {
-    -webkit-transform: rotate(135deg);
-    -moz-transform: rotate(135deg);
-    -ms-transform: rotate(135deg);
-    -o-transform: rotate(135deg);
-    transform: rotate(135deg);
-}
-.no-touch #main-nav .cd-close-menu:hover::before {
-    -webkit-transform: rotate(225deg);
-    -moz-transform: rotate(225deg);
-    -ms-transform: rotate(225deg);
-    -o-transform: rotate(225deg);
-    transform: rotate(225deg);
-}
-.no-touch #main-nav .cd-close-menu:hover::after {
-    -webkit-transform: rotate(315deg);
-    -moz-transform: rotate(315deg);
-    -ms-transform: rotate(315deg);
-    -o-transform: rotate(315deg);
-    transform: rotate(315deg);
-}
-#main-nav.is-visible {
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
-    -webkit-transform: translateY(0);
-    -moz-transform: translateY(0);
-    -ms-transform: translateY(0);
-    -o-transform: translateY(0);
-    transform: translateY(0);
-}
-.no-js #main-nav {
-    position: static;
-    -webkit-transform: translateY(0);
-    -moz-transform: translateY(0);
-    -ms-transform: translateY(0);
-    -o-transform: translateY(0);
-    transform: translateY(0);
-}
-.no-js #main-nav .cd-close-menu {
+
+
+/* .no-js #main-nav .cd-close-menu {
     display: none;
-}
+} */
 
 .cd-shadow-layer {
     position: fixed;

@@ -44,7 +44,8 @@
         <!--Theme Colors css-->
         <!--<link rel="stylesheet" href="assets/css/white.css">-->  
         
-        
+           <script src="{% static '/js/vendor/jquery-1.11.2.min.js' %}"></script>
+        <script src="{% static '/js/vendor/bootstrap.min.js' %}"></script>
         <script src="https://d3js.org/d3.v3.min.js"></script>
 
     </head>
@@ -59,28 +60,35 @@
                 <div class="loaded hexdots-loader">Loading…</div>
             </div><!-- End off Preloader -->
 
-<!-- 
 
+          
             <div class="container">
                 <div class="div-menu">
                     <header class="cd-header">
                         <a href="#home" class="brand-logo text-left"><img src="{% static '/images/logo.png' %}" alt="" /></a>
+                      
                         <a class="cd-menu-trigger" href="#main-nav"><span></span></a>
                     </header>
                 </div>
 
-                <nav id="main-nav">
-                    <ul>
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#about">About Us</a></li>
-                        <li><a href="#service">Service</a></li>
-                        <li><a href="#team">Our Team</a></li>
-                        <li><a href="#portfolio">Our Work</a></li>
-                        <li><a href="#contactus">Contact</a></li>
-                    </ul>
-                    <a href="#" class="cd-close-menu">Close<span></span></a>
-                </nav>
-            </div> -->
+              
+                    <!-- <nav id="main-nav">
+                        <ul>
+                            <li><a href="#home">Home</a></li>
+                            <li><a href="#about">About Us</a></li>
+                            <li><a href="#contactus">Contact</a></li>
+                            {% if user.is_authenticated %}
+                            <li><a href="{% url 'logout' %}">logout</a></li>
+                            {% else %}
+                            <li><a href="{% url 'login' %}">login</a></li>
+                            {% endif %}
+                            <li><a href="#" class="cd-close-menu">Close</a></li>
+                        </ul> -->
+                     
+                        
+                       
+        
+            </div>
 
 
 
@@ -103,11 +111,12 @@
                                     <li><a target="_blank" href="#">support</a></li> -->
 
                                     {% if user.is_authenticated %}
-                                        <li>You're now logged in!!!</li>
-                                        <li><a href="{% url 'logout' %}">logout</a></li>
+                                    <li><h3><a href="{% url 'logout' %}">logout</a></h3></li>
                                     {% else %}
-                                        <li><a href="{% url 'login' %}">login</a></li>
+                                    <li><h3><a href="{% url 'login' %}">login</a></h3></li>
                                     {% endif %}
+                                    
+                              
                                 </ul>
                             </div>
                             
@@ -200,11 +209,22 @@
                                     </div>
                                 </div>
 
-                                
-                                <div class="test">
-                                    <input type="file" id="fileinput" multiple ="multiple" accept="*" />
-                                </div>
-
+                                <!--Upload file-->
+                                <form  method="POST" enctype="multipart/form-data" class="form-horizontal"> 
+                                    {% csrf_token %}
+                                    <div class="form-group">
+                                        <label for="name" class="col-md-3 col-sm-3 col-xs-12 control-label">File: </label>
+                                        <div class="col-md-8">
+                                            <input type="file" name="csv_file" id="csv_file" required="True" class="form-control">
+                                        </div>                    
+                                    </div>
+                                    <div class="form-group">                    
+                                        <div class="col-md-3 col-sm-3 col-xs-12 col-md-offset-3" style="margin-bottom:10px;">
+                                             <button class="btn btn-primary"> <span class="glyphicon glyphicon-upload" style="margin-right:5px;"></span>Upload </button>
+                                        </div> 
+                                    </div>
+                                    </form>
+                                <!--End of upload file-->
 
 
                             </div><!-- End of main Portfolio area -->
@@ -253,10 +273,25 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12">
+                            {% if user.is_authenticated %}
+                            <div class="col md-9">
+                                <div>
+                                    <h2>留言板後台</h2>
+                                </div>
+                                <ul>
+                                    {%for i in msgs  %}
+                                    <div>
+                                        <li><span >{{i.talker}}說： </span>{{i.message}}</li>
+                                    </div>
+                                    {%endfor%}
+                                </ul>     
+                            </div>
+
+                            {%else%}
                             <div class="main_blog_area m-y-3 p-y-3 wow fadeInUp">
-                                <div class="col-md-3">
+                                <div class="col-md-6">
                                     <div class="single_blog_menu m-t-2">
-                                        <h2>Board</h2>
+                                        <h2>Have something to say?</h2>
                                     </div>
                                 </div>
                                 <div class="col-md-3">
@@ -267,25 +302,28 @@
                         </div>
                         <div class="col-md-3">
                             <div class="single_contant_right">
-                                <form action="" method="get">
-                                    <label for="user_name">您的名字</label>
-                                    <input id="user_name" type="text" name="user_name">
-                                    <label for="user_msg">說點什麼...</label>
-                                    <input id="user_msg" type="text" name="user_msg">
-                    
+                                <form action="" method="post">
+                                        {% csrf_token %}
+                                    <table>
+                                        <tr>
+                                            <td><label for="user_name">您的名字</label></td>
+                                            <td><input id="user_name" type="text" name="user_name"></td>
+                                        </tr>
+                                        <tr>
+                                            <td><label for="user_msg">說點什麼...</label></td>
+                                            <td><input id="user_msg" type="text" name="user_msg"></td>
+                                        </tr>
+
+
+
+                                    </table>
+                                    <input type="hidden" name="ok" value="yes">
                                     <input type="submit" value="留言">
                                 </form>
                             </div>
+                            {% endif %}
                         </div>
-                        <div class="col md-9">
-
-                            <ul>
-                                {%for i in msgs  %}
-                                <li>{{i.talker}} : {{i.message}}</li>
-                                {%endfor%}
-                            </ul>
-                            
-                        </div>
+                       
                         
                     
                 </div><!-- End of container  -->
@@ -303,22 +341,8 @@
         <!--End of Footer-->
 
 
-        <script>
-            // var dataPath = "../data/";
-            // var dataFile = "exp3,4.csv";
-            // var dataURL = dataPath + dataFile;
+       
 
-            // d3.csv(dataURL,function(data) {
-            //     console.log(data);
-            // });
-        
-        </script>
-
-
-
-
-        <script src="{% static '/js/vendor/jquery-1.11.2.min.js' %}"></script>
-        <script src="{% static '/js/vendor/bootstrap.min.js' %}"></script>
 
         <!-- Compiled and minified JavaScript -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
@@ -326,8 +350,21 @@
         <script src="{% static '/js/materialize.js' %}"></script>
         <script src="{% static '/js/jquery.magnific-popup.js' %}"></script>
         <script src="{% static '/js/plugins.js' %}"></script>
-        <script src="{% static 'js/main.js' %}"></script>
-        <script src="{% static 'js/user.js' %}"></script>
+        <script src="{% static '/js/main.js' %}"></script>
+        <script src="{% static '/js/user.js' %}"></script>
 
+
+        <script>
+                // var dataPath = "../data/";
+                // var dataFile = "exp3,4.csv";
+                // var dataURL = dataPath + dataFile;
+    
+                // d3.csv(dataURL,function(data) {
+                //     console.log(data);
+                // });
+
+            
+            </script>
+    
     </body>
 </html>

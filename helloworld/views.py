@@ -7,10 +7,12 @@ from myapp.models import TextMessage
 
 
 def index(request):
-    if 'user_name' and 'user_msg' in request.GET:
-        new_msg = TextMessage.objects.create(talker = request.GET['user_name'], message = request.GET['user_msg'])
+    if 'ok' in request.POST:
+        user_name = request.POST["user_name"]
+        user_msg = request.POST["user_msg"]      
+        new_msg = TextMessage.objects.create(talker = user_name, message = user_msg)
     msgs = TextMessage.objects.all()
-    return render(request, 'index.html',locals())
+    return render(request, 'index.html',locals())##未來把local改掉
 
 
 	
