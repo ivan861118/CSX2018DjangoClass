@@ -660,3 +660,9 @@ nav ul li {
 }*/
 
 
+/*我的*/
+table,tr,td {
+    border: 1px solid black;
+}
+
+

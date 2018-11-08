@@ -49,8 +49,15 @@
         <script src="https://d3js.org/d3.v3.min.js"></script>
 
     </head>
+    <style>
+    table, th, td {
+    border: 1px solid black;
+}
+    </style>
+    
 
     <body data-spy="scroll" data-target="#scrollspy">
+        
 
 
         <div class="main_figur">
@@ -104,6 +111,7 @@
                             <div class="main_home text-center wow fadeInUp" data-wow-duration="700ms">
                                 <h1>Everything is designed. <br /> 
                                     Few things are designed well.</h1>
+
                                 <ul class="list-inline">
                                     <!-- <li><a target="_blank" href="#">Welcome</a></li>
                                     <li><a target="_blank" href="#">design</a></li>
@@ -141,6 +149,7 @@
                                     <div class="row">
                                         <div class="col-md-4">
                                             <h2>About Us</h2>
+                                            
                                         </div>
                                         <div class="col-md-8">
                                             <h6 class="m-b-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
@@ -273,20 +282,30 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12">
+                            <!--For 登入的使用者-->
                             {% if user.is_authenticated %}
                             <div class="col md-9">
                                 <div>
                                     <h2>留言板後台</h2>
+                                   
                                 </div>
-                                <ul>
-                                    {%for i in msgs  %}
-                                    <div>
-                                        <li><span >{{i.talker}}說： </span>{{i.message}}</li>
-                                    </div>
+                                    <table >
+                                        <tr>
+                                            <td>Message</td>
+                                            <td>delete</td>
+                                        </tr>
+                                        
+                                    {%for i in msgs  %}   
+                                        <tr>
+                                            <td><span>{{i.talker}}說：</span>{{i.message}}</td>
+                                            <td><button id={{i}} type="button" class="btn btn-danger">Delete</button></td>
+                                            
+                                        </tr>
                                     {%endfor%}
-                                </ul>     
+                                    </table>
                             </div>
-
+                            
+                            <!--For 訪客-->
                             {%else%}
                             <div class="main_blog_area m-y-3 p-y-3 wow fadeInUp">
                                 <div class="col-md-6">
@@ -352,6 +371,7 @@
         <script src="{% static '/js/plugins.js' %}"></script>
         <script src="{% static '/js/main.js' %}"></script>
         <script src="{% static '/js/user.js' %}"></script>
+    
 
 
         <script>

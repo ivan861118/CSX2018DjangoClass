@@ -15,5 +15,6 @@ def index(request):
     return render(request, 'index.html',locals())##未來把local改掉
 
 
+
 	
 

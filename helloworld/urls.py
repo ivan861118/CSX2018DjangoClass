@@ -22,4 +22,5 @@ urlpatterns = [
     path('accounts/', include('django.contrib.auth.urls')),
     # path('', TemplateView.as_view(template_name='index.html'), name='index'), # new
     path('', views.index, name='index'),
+    # url(r'^upload/csv/$', views.upload_csv, name='upload_csv'),
 ]
