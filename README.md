@@ -28,5 +28,8 @@
     Sols:
       views.py: store data & render(send data)
       urls.py:routing 
-    link: https://ivanhelloworldtest.herokuapp.com/
+### Superuser:
+帳號：admin
+密碼：admin
+link: https://ivanhelloworldtest.herokuapp.com/
     
