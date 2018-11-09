@@ -14,6 +14,14 @@ def index(request):
     msgs = TextMessage.objects.all()
     return render(request, 'index.html',locals())##未來把local改掉
 
+def delete(request,id):
+    temp = TextMessage.objects.get(id=id)
+    temp.delete();
+    return redirect('index')
+
+
+
+
 
 
 	
